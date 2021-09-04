@@ -29,6 +29,7 @@
     "@fontsource/epilogue": "^4.5.0",
     "@fontsource/syne": "^4.5.0",
     "@mui/material": "^5.0.0-rc.0",
+    "@types/express": "^4.17.13",
     "@types/react-dom": "^17.0.9",
     "@types/react-helmet": "^6.1.2",
     "@types/react-router-dom": "^5.1.8",
