@@ -9,7 +9,7 @@ const Places: FC = () => {
     { place: 'Canada', domain: 'Media', anchor: 'media' },
     { place: 'Germany', domain: 'Public Policy', anchor: 'public-policy' },
     { place: 'United Kingdom', domain: 'Research', anchor: 'research' },
-    { place: 'France', domain: 'Public Participation', anchor: 'public-participation' },
+    { place: 'France', domain: 'Engagement', anchor: 'engagement' },
   ];
 
   return (

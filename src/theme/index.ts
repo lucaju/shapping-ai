@@ -1,9 +1,8 @@
 import { colors, createTheme } from '@mui/material';
 
-const theme = (darkMode?: boolean) =>
+const theme = () =>
   createTheme({
     palette: {
-      mode: darkMode ? 'dark' : 'light',
       primary: {
         main: colors.orange[500],
       },
