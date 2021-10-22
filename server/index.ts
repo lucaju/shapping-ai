@@ -4,6 +4,6 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(
-    chalk.bgGreen.black(`\n Juno Chatbot listening on port ${port}! \n`)
+    chalk.bgGreen.black(`\n Server listening on port ${port}! \n`)
   );
 });
