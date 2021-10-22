@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'shapping-ai-website',
+      name: 'shaping-ai-website',
       script: 'ts-node ./server/index.ts',
       args: '--no-daemon',
       env: {
