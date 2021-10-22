@@ -8,7 +8,7 @@ yarn-error.log*
 
 # .env-cmdrc.js
 
-# /dist
+/dist
 
 # Runtime data
 pids

@@ -33,9 +33,7 @@ const output = {
 };
 
 const resolve: ResolveOptions = {
-  alias: {
-    '@src': path.resolve(__dirname, 'src/'),
-  },
+  alias: { '@src': path.resolve(__dirname, 'src/') },
   extensions: ['.tsx', '.ts', '.js'],
 };
 
@@ -59,12 +57,7 @@ const plugins: WebpackPluginInstance[] = [
   }),
   new MiniCssExtractPlugin(),
   new WebpackBar({ color: env === 'development' ? '#7e57c2' : '#9ccc65' }),
-  new webpack.ProvidePlugin({
-    process: 'process/browser',
-  }),
-  new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify(env),
-  }),
+  new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(env) }),
 ];
 
 const rules: RuleSetRule[] = [
@@ -77,35 +70,22 @@ const rules: RuleSetRule[] = [
     },
   },
   {
-    test: /\.js$/,
-    loader: 'esbuild-loader',
-    options: {
-      loader: 'js', // Remove this if you're not using JSX
-      target: 'es2020', // Syntax to compile to (see options below for possible values)
-    },
-  },
-  {
     test: /\.css$/,
     use: [MiniCssExtractPlugin.loader, 'css-loader'],
   },
   {
     test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
     type: 'asset',
-    generator: {
-      filename: 'fonts/[name][ext][query]',
-    },
+    generator: { filename: 'fonts/[name][ext][query]' },
   },
   {
     test: /\.(png|jpg|jpeg|gif)$/i,
     type: 'asset/resource',
-    generator: {
-      filename: 'images/[name][ext][query]',
-    },
+    generator: { filename: 'images/[name][ext][query]' },
   },
 ];
 
 const hints = env === 'development' ? false : 'warning';
-
 const debug = env === 'development' && false;
 const stats = debug ? { children: true } : {};
 
