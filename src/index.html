@@ -4,9 +4,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="mobile-web-app-capable" content="yes" />
-
+    <!-- <PageMap>
+      <DataObject type="document">
+        <Attribute name="title">Shaping AI</Attribute>
+        <Attribute name="description"
+          >Shaping AI is a multi-national and multi-disciplinary social research project that
+          examines the global trajectories of public discourse on artificial intelligence (AI) in
+          four countries (Germany, UK, Canada and France) over a ten-year period
+          2012-2021</Attribute
+        >
+      </DataObject>
+      <DataObject type="thumbnail">
+        <Attribute name="src" value="https://www.shapingai.org/favicon-32x32.png" />
+        <Attribute name="width" value="32" />
+        <Attribute name="height" value="32" />
+      </DataObject>
+    </PageMap> -->
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "ResearchProject",
+        "name": "Shaping AI",
+        "image": "https://www.shapingai.org/favicon-32x32.png",
+        "description": "Shaping AI is a multi-national and multi-disciplinary social research project that examines the global trajectories of public discourse on artificial intelligence (AI) in four countries (Germany, UK, Canada and France) over a ten-year period 2012-2021",
+        "url": "https://www.shapingai.org"
+      }
+    </script>
     <title>Shaping AI</title>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-BDK82SD9HM"></script>
   <script>
@@ -16,16 +40,7 @@
     gtag('config', 'G-BDK82SD9HM');
   </script> -->
   </head>
-
   <body>
-    <!-- Display a message if JS has been disabled on the browser. -->
-    <noscript
-      >If you're seeing this message, that means
-      <strong>JavaScript has been disabled on your browser</strong>, please
-      <strong>enable JS</strong> to make this app work.
-    </noscript>
-
-    <!-- The app hooks into this div -->
     <div id="app"></div>
   </body>
 </html>
