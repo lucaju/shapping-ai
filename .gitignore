@@ -9,6 +9,7 @@ yarn-error.log*
 # .env-cmdrc.js
 
 /dist
+BEFORE_EACH_UPDATE.md
 
 # Runtime data
 pids
