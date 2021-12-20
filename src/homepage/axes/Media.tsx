@@ -122,7 +122,7 @@ const Media: FC = () => {
           <Typography component="span" sx={{ fontWeight: 700 }}>
             Marek Blottiere
           </Typography>{' '}
-          Marek Blottiere is a research assistant for the Shaping AI research project. As part of
+          is a research assistant for the Shaping AI research project. As part of
           his FRQSC-funded Master&apos;s degree in cultural studies at the Institut National de la
           Recherche Scientifique, Marek investigates the media ecosystem in Montreal, Canada, and
           how it is shaping the cultural politics of AI.
