@@ -35,7 +35,7 @@ const Media: FC = () => {
           Is AI a tsunami, a fourth industrial revolution, or a looming dystopia? Since 2012, a wide
           array of media experts and professionals have shaped popular discourse about, and lay
           understandings on, what AI is, what it currently does, what it could eventually accomplish
-          and whether journalist speculation about AI has been as influential to AI’s success as the
+          and whether journalist speculation about AI has been as influential to AI&apos;s success as the
           technology itself. Through inductive and deductive mixed methods, research investigates
           how journalists simplify competing technical and policy realities in the name of public
           interest, give certain actors more visibility and legitimacy than others, and invoke
@@ -92,10 +92,40 @@ const Media: FC = () => {
             Guillaume Dandurand
           </Typography>{' '}
           is a postdoctoral fellow at the Institut national de la recherche scientifique, in
-          Montreal, Canada. He is co-editor of Les économies de la promesse (Presses de l’Université
-          de Montréal, 2022). His doctoral research was awarded York University’s Dissertation Prize
+          Montreal, Canada. He is co-editor of Les économies de la promesse (Presses de l&apos;Université
+          de Montréal, 2022). His doctoral research was awarded York University&apos;s Dissertation Prize
           (2019) and made the shortlist for the International Convention of Asia Scholars Social
           Sciences Dissertation competition (2021).
+        </Typography>
+
+        <Typography component="p" variant={isMobile ? 'body1' : 'subtitle1'}>
+          <Typography component="span" sx={{ fontWeight: 700 }}>
+            Meaghan Wester
+          </Typography>{' '}
+          is a second year Master&apos;s Student in Media Studies at Concordia University and a recipient
+          of the Joseph Armand Bombardier Canadian Graduate Scholarship. She holds a BA from McGill
+          University in Sociology with concentrations in both Communication Studies and Political
+          Science. Her research investigates the ethical guidelines governing the procurement of
+          Artificial Intelligence by the Canadian government.
+        </Typography>
+
+        <Typography component="p" variant={isMobile ? 'body1' : 'subtitle1'}>
+          <Typography component="span" sx={{ fontWeight: 700 }}>
+            Nick Gertler
+          </Typography>{' '}
+          is a Master&apos;s student in Media Studies at Concordia University. Funded by scholarships
+          from both SSHRC and FRQSC, his thesis focuses on algorithmic impact assessments and
+          algorithmic governance in Canada.
+        </Typography>
+
+        <Typography component="p" variant={isMobile ? 'body1' : 'subtitle1'}>
+          <Typography component="span" sx={{ fontWeight: 700 }}>
+            Marek Blottiere
+          </Typography>{' '}
+          Marek Blottiere is a research assistant for the Shaping AI research project. As part of
+          his FRQSC-funded Master&apos;s degree in cultural studies at the Institut National de la
+          Recherche Scientifique, Marek investigates the media ecosystem in Montreal, Canada, and
+          how it is shaping the cultural politics of AI.
         </Typography>
       </Stack>
     </Stack>
