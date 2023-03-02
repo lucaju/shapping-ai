@@ -2,25 +2,15 @@ import path from 'path';
 
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import { ESBuildMinifyPlugin } from 'esbuild-loader';
+import { EsbuildPlugin } from 'esbuild-loader';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack, { EntryObject, ResolveOptions, RuleSetRule, WebpackPluginInstance } from 'webpack';
 import WebpackBar from 'webpackbar';
 
-const env = process.env.NODE_ENV;
+// const env = process.env.NODE_ENV;
 
-const mode = env === 'development' ? 'development' : 'production';
-const watch = false; //env === 'development' ? true : false;
-const cache = env === 'development' ? true : false;
-const devtool = env === 'development' ? 'inline-source-map' : 'source-map'; //'eval-source-map' (might be faster for dev)
-const devServer =
-  env === 'development'
-    ? {
-        contentBase: path.join(__dirname, 'dist'),
-        historyApiFallback: true,
-      }
-    : {};
+const isDev = process.env.NODE_isDev;
 
 const entry: EntryObject = {
   app: [path.resolve(__dirname, 'src', 'index.tsx')],
@@ -29,21 +19,30 @@ const entry: EntryObject = {
 const output = {
   path: path.resolve(__dirname, 'dist'),
   publicPath: '/',
-  pathinfo: env === 'development' ? true : false,
+  pathinfo: isDev ? true : false,
 };
 
 const resolve: ResolveOptions = {
   alias: { '@src': path.resolve(__dirname, 'src/') },
-  extensions: ['.tsx', '.ts', '.js'],
+  extensions: ['.tsx', '.ts', '.js', '.json'],
+  fallback: {
+    buffer: false,
+    events: false,
+    fs: false,
+    path: false,
+    process: false,
+    querystring: false,
+    string_decoder: false,
+    url: false,
+  },
 };
 
 const optimization = {
-  emitOnErrors: env === 'development' ? true : false,
-  minimize: env === 'development' ? false : true,
-  minimizer:
-    env === 'development' ? [] : [new ESBuildMinifyPlugin({ target: 'es2020', css: true })],
-  sideEffects: env === 'development' ? false : true,
-  usedExports: env === 'development' ? false : true,
+  emitOnErrors: isDev ? true : false,
+  minimize: isDev ? false : true,
+  minimizer: isDev ? [] : [new EsbuildPlugin({ target: 'es2020', css: true })],
+  sideEffects: isDev ? false : true,
+  usedExports: isDev ? false : true,
 };
 
 const plugins: WebpackPluginInstance[] = [
@@ -55,19 +54,16 @@ const plugins: WebpackPluginInstance[] = [
     template: path.resolve(__dirname, 'src', 'index.html'),
     favicon: path.resolve(__dirname, 'src', 'assets', 'icons', 'favicon-32x32.png'),
   }),
-  new MiniCssExtractPlugin(),
-  new WebpackBar({ color: env === 'development' ? '#7e57c2' : '#9ccc65' }),
-  new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(env) }),
+  new MiniCssExtractPlugin({ filename: 'css/[name].css' }),
+  new WebpackBar({ color: isDev ? '#7e57c2' : '#9ccc65' }),
+  // new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(env) }),
 ];
 
 const rules: RuleSetRule[] = [
   {
-    test: /\.tsx?$/,
+    test: /\.[jt]sx?$/,
     loader: 'esbuild-loader',
-    options: {
-      loader: 'tsx', // Or 'ts' if you don't need tsx
-      target: 'es2020',
-    },
+    options: { tsconfig: './tsconfig.json', target: 'es2020' },
   },
   {
     test: /\.css$/,
@@ -83,26 +79,27 @@ const rules: RuleSetRule[] = [
     type: 'asset/resource',
     generator: { filename: 'images/[name][ext][query]' },
   },
+  {
+    test: /\.svg$/,
+    loader: 'svg-inline-loader',
+    generator: { filename: 'images/[name][ext][query]' },
+    options: { removeSVGTagAttrs: false },
+  },
 ];
 
-const hints = env === 'development' ? false : 'warning';
-const debug = env === 'development' && false;
-const stats = debug ? { children: true } : {};
-
 const webpackConfig: webpack.Configuration = {
-  cache,
-  devServer,
-  devtool,
+  cache: isDev ? true : false,
+  devtool: isDev ? 'inline-source-map' : 'source-map', // inline-source-map //'eval-source-map' (might be faster for dev),
   entry,
-  mode,
+  mode: isDev ? 'development' : 'production',
   module: { rules },
   optimization,
   output,
-  performance: { hints },
+  performance: { hints: isDev ? false : 'warning' },
   plugins,
   resolve,
-  stats,
-  watch,
+  stats: isDev ? { children: true } : {},
+  watch: isDev ? true : false,
 };
 
 export default webpackConfig;
