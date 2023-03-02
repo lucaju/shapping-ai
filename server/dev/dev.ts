@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import kleur from 'kleur';
 import { Express } from 'express';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -13,5 +13,5 @@ export const devTools = (app: Express) => {
       stats: { colors: true },
     })
   );
-  chalk.bgBlue.black(`\n Dev Server is online! \n`);
+  kleur.bgBlue().black(`\n Dev Server is online! \n`);
 };
