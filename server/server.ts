@@ -1,26 +1,26 @@
-import path from 'path';
 import express from 'express';
+import path from 'path';
 
 const publicPath = path.join(__dirname, '..', 'dist');
-const app = express();
+const server = express();
 
-app.use(express.json({ limit: '5mb' })); // support json encoded bodies
+server.use(express.json({ limit: '5mb' })); // support json encoded bodies
 
-// dev tools
-const loadDevTools = async () => {
-  const { devTools } = await import('./dev/dev');
-  devTools(app);
+// dev server
+const loadDevServer = async () => {
+  const { devServer } = await import('./dev');
+  devServer(server);
 };
 
-if (process.env.NODE_ENV === 'development') loadDevTools();
+if (process.env.NODE_ENV === 'development') loadDevServer();
 
 // static
-app.use(express.static(publicPath));
+server.use('/content', express.static('./content'));
+server.use(express.static(publicPath));
 
 // catch all
-app.get('*', (req, res) => {
+server.get('*', (req, res) => {
   res.status(200).sendFile(path.join(publicPath, 'index.html'));
 });
 
-
-export default app;
+export default server;

@@ -25,7 +25,10 @@ const output = {
 const plugins = [
   new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
   new CopyWebpackPlugin({
-    patterns: [{ from: path.resolve(__dirname, 'src', 'assets'), to: 'assets' }],
+    patterns: [
+      { from: path.resolve(__dirname, 'src', 'assets'), to: 'assets' },
+      { from: path.resolve(__dirname, 'src', 'content'), to: 'content' },
+    ],
   }),
   new HtmlWebpackPlugin({
     template: path.resolve(__dirname, 'src', 'index.html'),
@@ -33,7 +36,11 @@ const plugins = [
   }),
   new MiniCssExtractPlugin({ filename: 'css/[name].css' }),
   new WebpackBar({ color: isDev ? '#7e57c2' : '#9ccc65' }),
-  new webpack.DefinePlugin({ NODE_ENV: JSON.stringify(process.env.NODE_ENV) }),
+  new webpack.DefinePlugin({
+    webpackEnv: {
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    },
+  }),
   new webpack.ProvidePlugin({ process: 'process/browser' }),
 ];
 
