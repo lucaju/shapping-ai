@@ -5,7 +5,7 @@ interface PageProps {
   title?: string;
 }
 
-const SITE_TITLE = 'Shapping AI';
+const SITE_TITLE = 'Shaping AI';
 
 // eslint-disable-next-line react/display-name
 export const Page = forwardRef<PageProps, any>(({ children, title, ...rest }, ref) => {
