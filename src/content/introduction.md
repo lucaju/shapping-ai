@@ -1,4 +1,4 @@
-# Shapping AI
+# Shaping AI
 
 ## Shaping AI is a multi-national and multi-disciplinary social research project that examines the global trajectories of public discourse on artificial intelligence (AI) in four countries (Germany, UK, Canada and France) over a ten-year period 2012-2021
 
