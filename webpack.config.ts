@@ -12,8 +12,6 @@ import WebpackBar from 'webpackbar';
 
 const isDev = process.env.NODE_ENV === 'development';
 
-console.log(isDev)
-
 const entry: EntryObject = {
   app: [path.resolve(__dirname, 'src', 'index.tsx')],
 };
