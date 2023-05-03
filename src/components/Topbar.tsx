@@ -11,7 +11,7 @@ export const Topbar = () => {
     { label: 'Public Policy', target: '/#public_policy' },
     { label: 'Research', target: '/#research' },
     { label: 'Engagement', target: '/#engagement' },
-    { label: 'Wokshop', target: '/workshop/shifting-ai-controversies' },
+    { label: 'Workshop', target: '/workshop/shifting-ai-controversies' },
   ];
 
   const handleMenuClick = (url: string) => {
